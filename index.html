@@ -47,16 +47,28 @@
 					<!-- Zone de sélection de fichier -->
 					<label for="file" class="fileLabel">
 						<i class="fa-solid fa-folder-open"></i>
+
+
 						<span>Choisir un fichier</span>
 					</label>
 					<input id="file" type='file' name='file' />
 
+          
 					<!-- Bouton d'envoi -->
 					<button type='submit' class="btnPrimary">
 						<i class="fa-solid fa-arrow-right"></i>
 						Générer le QR code
 					</button>
 				</form>
+
+
+        <!-- BOUTON POUR VOIR LE QR CODE -->
+	<?php if (!empty($_GET['qrcode'])): ?>
+		<button class="btnPrimary" onclick="window.location.href='<?php echo $_GET['qrcode']; ?>'">
+			<i class="fa-solid fa-qrcode"></i>
+			Voir le QR Code
+		</button>
+	<?php endif; ?>
 			</article>
 
 		</div>
