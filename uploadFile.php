@@ -11,7 +11,6 @@
 		$initialFilename = $_FILES["file"]["name"];
 		$temp = explode(".", $_FILES["file"]["name"]);
 		$extension = strtolower(end($temp));
-
 		// Check allowed extensions
 		if (in_array($extension, $allowedExts)) {
 
@@ -26,10 +25,16 @@
 					} while (file_exists("bleutransfert/files/{$randomFilename}.{$extension}"));
 
 					// Save uploaded file to disk and loads the path in the database
-					$query="INSERT INTO tblFiles VALUES (NULL,'bleutransfert/files/{$randomFilename}.{$extension}',NOW())";
+					$query="INSERT INTO tblFiles VALUES (NULL,'bleutransfert/files/{$randomFilename}.{$extension}',NOW());";
+					// echo $query;
 					$success=$db->query($query);
 					
-					if ($success) header("Location: uploadQR.php");
+					if ($success) {
+						session_start();
+						$_SESSION['fileName']=$randomFilename;
+						header("Location: uploadQR.php");
+						exit();
+					}
 					else header("Location: index.php");
 
 					move_uploaded_file($_FILES["file"]["tmp_name"], "bleutransfert/files/{$randomFilename}.{$extension}");
