@@ -1,7 +1,7 @@
 <?php
-    define("IPSERVER","http://10.122.7.180");
-    define('TTL',"5");
-    define('UPLOADFILES',"/bleutrasnfert/files");
+    $IPSERVER="http://10.122.7.180";
+    $TTL="5";
+    $UPLOADFILES="/bleutransfert";
 
 
 

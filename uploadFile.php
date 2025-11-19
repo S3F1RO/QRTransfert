@@ -25,24 +25,27 @@
 					// Generate random filename
 					do {
 						$randomFilename = generateRandomFilename();
-					} while (file_exists("$uploadFile{$randomFilename}.{$extension}"));
+					} while (file_exists("$UPLOADFILES/files/{$randomFilename}.{$extension}"));
 
 					// Save uploaded file to disk and loads the path in the database
-					$query="INSERT INTO tblFiles VALUES (NULL,'$uploadFile{$randomFilename}.{$extension}',NOW());";
+					$query="INSERT INTO tblFiles VALUES (NULL,'$UPLOADFILES/files/{$randomFilename}.{$extension}',NOW());";
 					// echo $query;
 					$success=$db->query($query);
-  					$lastInsertedId = $db->insert_id;
+  					
+					$lastInsertedId = $db->insert_id;
 
   					if ($success) {
 						session_start();
 						$_SESSION['id']=$lastInsertedId;
+						echo "$UPLOADFILES/files/{$randomFilename}.{$extension}";
+						move_uploaded_file($_FILES["file"]["tmp_name"], ".$UPLOADFILES/files/{$randomFilename}.{$extension}");
+
 						header("Location: uploadQR.php");
 						exit();
 					}
-					else header("Location: index.php");
+					else header("Location: logout.php");
 
-					move_uploaded_file($_FILES["file"]["tmp_name"], "$uploadFile{$randomFilename}.{$extension}");
-					$msg = "File saved in '$uploadFile{$randomFilename}.{$extension}'.";
+					$msg = "File saved in '.$UPLOADFILES/files/{$randomFilename}.{$extension}'.";
 				} else {
 					$msg = "Impossible d'envoyer le fichier (" . $_FILES["file"]["error"] . ").";
 				}
