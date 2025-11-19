@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="fr">
 	<!-- Head -->
 	<head>
 		<!-- CSS files -->
@@ -8,6 +7,10 @@
 		<link rel='stylesheet' type='text/css' href='./css/01_mobile.css' media='screen' />
 		<link rel='stylesheet' type='text/css' href='./css/02_fonts.css' media='screen' />
 		<link rel='stylesheet' type='text/css' href='./css/webDesign1.css' media='screen' />
+
+		<!-- Font Awesome pour les icônes -->
+		<link rel="stylesheet"
+		      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 		<!-- JS files -->
 		<script type='text/javascript' src='./js/jquery-3.5.1.min.js'></script>
@@ -25,21 +28,34 @@
 		<link rel='icon' type='image/png' href='./design/favicon.png' />
 
 		<!-- Title -->
-		<title>Template</title>
+		<title>QR Transfert</title>
 	</head>
-
-
 
 	<!-- Body -->
 	<body>
 		<!-- Wrapper -->
 		<div class='wrapper'>
 
-			<h1>Upload file</h1>
+			<h1>
+				<i class="fa-solid fa-qrcode"></i>
+				QR Transfert
+			</h1>
+
 			<article>
-				<form action='uploadFile.php' method='post' enctype='multipart/form-data'>
-					<input type='file' name='file' />
-					<input type='submit' value='OK' />
+				<form action='uploadFile.php' method='post' enctype='multipart/form-data' class="uploadForm">
+
+					<!-- Zone de sélection de fichier -->
+					<label for="file" class="fileLabel">
+						<i class="fa-solid fa-folder-open"></i>
+						<span>Choisir un fichier</span>
+					</label>
+					<input id="file" type='file' name='file' />
+
+					<!-- Bouton d'envoi -->
+					<button type='submit' class="btnPrimary">
+						<i class="fa-solid fa-arrow-right"></i>
+						Générer le QR code
+					</button>
 				</form>
 			</article>
 
