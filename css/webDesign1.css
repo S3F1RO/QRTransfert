@@ -171,10 +171,10 @@ article {
 }
 
 .qrImage {
-    width: 220px;
-    height: 220px;
-    object-fit: contain;
+    max-width: 70%;
+    height: auto;
 }
+
 
 /*==============================
     Liens
