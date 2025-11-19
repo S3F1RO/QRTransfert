@@ -171,7 +171,7 @@ article {
 }
 
 .qrImage {
-    max-width: 50%;
+    max-width: 70%;
     height: auto;
 }
 
@@ -262,10 +262,16 @@ a:active {
     .qrImage {
         width: 260px;
         height: 260px;
+        margin: 0 auto 0 auto;
     }
 
     .qrContainer + .btnPrimary,
     .qrContainer + .btnPrimary + .btnPrimary {
         width: auto;
     }
+    .qrContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
 }

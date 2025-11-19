@@ -9,7 +9,7 @@
 	// Data from client (upload)
 	$msg = "";
 	if (isset($_FILES["file"]["name"])) {
-		$allowedExts = array("jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "ods", "tex");
+		$allowedExts = array("jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "ods", "mp4");
 		$initialFilename = $_FILES["file"]["name"];
 		$temp = explode(".", $_FILES["file"]["name"]);
 		$extension = strtolower(end($temp));
