@@ -1,4 +1,8 @@
 <?php
+	//Initialise Database
+	include_once("./dbConfig.php");
+	$db = new mysqli(DB_HOST, DB_LOGIN, DB_PWD, DB_NAME);
+	$db->set_charset("utf8");
 
 	// Data from client (upload)
 	$msg = "";
@@ -21,7 +25,10 @@
 						$randomFilename = generateRandomFilename();
 					} while (file_exists("uploads/{$randomFilename}.{$extension}"));
 
-					// Save uploaded file to disk
+					// Save uploaded file to disk and loads the path in the database
+					$query="INSERT INTO tblFiles VALUES (NULL,'uploads/{$randomFilename}.{$extension}',NOW())";
+					$success=$db->query($query);
+					
 					move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/{$randomFilename}.{$extension}");
 					$msg = "File saved in 'uploads/{$randomFilename}.{$extension}'.";
 				} else {
