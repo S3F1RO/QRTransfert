@@ -58,7 +58,7 @@ jQuery(function () {
         
         // On récupère l'URL actuelle (contient deja ?qrcode=...)
         const url = window.location.href;
-
+        document.execCommand('copy');
         // Copier dans le clipboard
         navigator.clipboard.writeText(url).then(function () {
 
