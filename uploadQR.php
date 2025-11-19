@@ -35,8 +35,8 @@
 	exec($command,$output,$returnCode);
 	echo $command;
 	
-	if ($returnCode == 0) header("Location: index.php?qrcode=<img class='qrImage' src='.$UPLOADFILES/qr/$randomFilename.png' alt='$randomFilename.png'/>");
-	else header("Location: logout.php");
+	if ($returnCode == 0) header("Location: index.php?qrcode=<img class='qrImage' src='.$UPLOADFILES/qr/$randomFilename.png' alt='$randomFilename.png'/>,");
+	// else header("Location: logout.php");
 
 	// Function : generate random filename
 	function generateRandomFilename($length=20) {

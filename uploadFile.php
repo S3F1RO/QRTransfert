@@ -9,12 +9,12 @@
 	// Data from client (upload)
 	$msg = "";
 	if (isset($_FILES["file"]["name"])) {
-		$allowedExts = array("txt", "jpg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "ods", "tex");
+		$allowedExts = array("jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "ods", "tex");
 		$initialFilename = $_FILES["file"]["name"];
 		$temp = explode(".", $_FILES["file"]["name"]);
 		$extension = strtolower(end($temp));
 		// Check allowed extensions
-		if (in_array($extension, $allowedExts)) {
+		// if (in_array($extension, $allowedExts)) {
 
 			// Check file size
 			if ($_FILES["file"]["size"] < 100 * 1024 * 1024) {
@@ -51,9 +51,10 @@
 			} else {
 				$msg = "La taille du fichier doit être inférieure à 20 Mo.";
 			}
-		} else {
-			$msg = "L'extension '.{$extension}' n'est pas autorisée. Les seules extensions autorisées sont 'txt', 'jpg', 'png', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'ods', 'tex'.";
-		}
+		// } 
+		// else {
+		// 	$msg = "L'extension '.{$extension}' n'est pas autorisée. Les seules extensions autorisées sont 'txt', 'jpg', 'png', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'ods', 'tex'.";
+		// }
 	}
 
 
