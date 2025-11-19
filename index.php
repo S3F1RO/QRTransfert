@@ -52,26 +52,25 @@
 
 
 			<!-- AFFICHAGE DIRECT DU QR CODE -->
-		<?php if (!empty($_GET['qrcode'])): ?>
-    <div class="qrContainer">
-        <h2><i class="fa-solid fa-qrcode"></i> Votre QR Code</h2>
-        <img src="<?php echo htmlspecialchars($_GET['qrcode']); ?>" class="qrImage" alt="QR Code">
-    </div>
-<?php endif; ?>
-
+			<?php if (!empty($_GET['qrcode'])): ?>
+				<div class="qrContainer">
+					<h2><i class="fa-solid fa-qrcode"></i> Votre QR Code</h2>
+				<?php echo $_GET['qrcode']; ?>
+				</div>
 
 				<!-- BOUTON COPIER LE LIEN -->
 				<button type="button" class="btnPrimary" id="copyLinkBtn">
 					<i class="fa-solid fa-copy"></i> Copier le lien
 				</button>
 
-				<!-- BOUTON ENVOYER PAR E-MAIL  -->
+				<!-- BOUTON ENVOYER PAR E-MAIL (rempli via JS) -->
 			<a 
     href="mailto:?subject=Votre%20lien%20QR%20Transfert&body=Voici%20le%20lien%20:%0D%0A%0D%0A __URL__ " 
     class="btnPrimary"
 >
     <i class="fa-solid fa-envelope"></i> Envoyer par e-mail
 </a>
+<?php endif; ?>
 
 		</article>
 
