@@ -1,75 +1,52 @@
-$(document).ready(function(){
-//==============================================================================
+// DRAG & DROP en jQuery
+jQuery(document).ready(function () {
 
+    var dropZone = jQuery("#dropZone");
+    var fileInput = jQuery("#file");
 
+    // Sécurité : si éléments absents → stop
+    if (dropZone.length === 0 || fileInput.length === 0) return;
 
+    // Liste des événements à bloquer
+    var events = "dragenter dragover dragleave drop";
 
-
-/*==============================================================================
-	jQuery events
-==============================================================================*/
-
-	// Change wrapper and <li> color on wrapper dblclick
-	jQuery("body").on("dblclick", ".wrapper", function() {
-		jQuery(this).css("background-color", "white");
-		jQuery("li").css("background-color", "yellow");
-	});
-
-//==============================================================================
-});
-// Drag & Drop pour la zone de fichier
-document.addEventListener("DOMContentLoaded", function () {
-    const dropZone = document.getElementById("dropZone");
-    const fileInput = document.getElementById("file");
-
-    if (!dropZone || !fileInput) return;
-
-    // Empêche le comportement par défaut (ouvrir le fichier dans le navigateur)
-    ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
-        dropZone.addEventListener(eventName, function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        });
+    // Empêcher le comportement navigateur
+    jQuery("body").on(events, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
     });
 
-    // Quand on survole avec un fichier
-    ["dragenter", "dragover"].forEach(eventName => {
-        dropZone.addEventListener(eventName, function () {
-            dropZone.classList.add("drag-over");
-        });
+    // Effet visuel : quand un fichier entre dans la zone
+    jQuery("body").on("dragenter dragover", "#dropZone", function () {
+        dropZone.addClass("drag-over");
     });
 
-    // Quand on sort ou qu'on lâche
-    ["dragleave", "drop"].forEach(eventName => {
-        dropZone.addEventListener(eventName, function () {
-            dropZone.classList.remove("drag-over");
-        });
+    // Effet visuel : quand il sort ou qu'on lâche
+    jQuery("body").on("dragleave drop", "#dropZone", function () {
+        dropZone.removeClass("drag-over");
     });
 
     // Quand on dépose le fichier
-    dropZone.addEventListener("drop", function (e) {
-        const files = e.dataTransfer.files;
+    jQuery("body").on("drop", "#dropZone", function (e) {
+        var files = e.originalEvent.dataTransfer.files;
+
         if (files && files.length > 0) {
-            // Met le fichier dans l'input file
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(files[0]); // on prend le premier fichier
-            fileInput.files = dataTransfer.files;
 
-            // Optionnel : changer le texte pour montrer le nom du fichier
-            const span = dropZone.querySelector("span");
-            if (span) {
-                span.textContent = "Fichier sélectionné : " + files[0].name;
-            }
+            // Ajouter le fichier au input[type=file]
+            var data = new DataTransfer();
+            data.items.add(files[0]);
+            fileInput[0].files = data.files;
+
+            // Mettre à jour le texte dans la zone
+            dropZone.find("span").text("Fichier: " + files[0].name);
         }
     });
 
-    // Quand l'utilisateur choisit via le clic classique
-    fileInput.addEventListener("change", function () {
-        if (fileInput.files.length > 0) {
-            const span = dropZone.querySelector("span");
-            if (span) {
-                span.textContent = "Fichier sélectionné : " + fileInput.files[0].name;
-            }
+    // Quand on choisit via clic
+    fileInput.on("change", function () {
+        if (this.files.length > 0) {
+            dropZone.find("span").text("Fichier: " + this.files[0].name);
         }
     });
+
 });
