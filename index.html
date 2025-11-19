@@ -33,22 +33,23 @@
 
 		<article>
 
-			<form action='uploadFile.php' method='post' enctype='multipart/form-data' class="uploadForm">
+<form action='uploadFile.php' method='post' enctype='multipart/form-data' class="uploadForm">
 
-				<!-- Zone de sélection de fichier -->
-				<label for="file" class="fileLabel">
-					<i class="fa-solid fa-folder-open"></i>
-					<span>Choisir un fichier</span>
-				</label>
+    <!-- Zone de sélection de fichier / drag & drop -->
+    <label for="file" class="fileLabel" id="dropZone">
+        <i class="fa-solid fa-folder-open"></i>
+        <span>Choisir un fichier ou le déposer ici</span>
+    </label>
 
-				<input id="file" type='file' name='file' required />
+    <input id="file" type='file' name='file' required />
 
-				<!-- Bouton d'envoi -->
-				<button type='submit' class="btnPrimary">
-					<i class="fa-solid fa-arrow-right"></i>
-					Générer le QR code
-				</button>
-			</form>
+    <!-- Bouton d'envoi -->
+    <button type='submit' class="btnPrimary">
+        <i class="fa-solid fa-arrow-right"></i>
+        Générer le QR code
+    </button>
+</form>
+
 
 		<!-- AFFICHAGE DIRECT DU QR CODE -->
 			<?php if (!empty($_GET['qrcode'])): ?>
