@@ -52,11 +52,13 @@
 
 
 			<!-- AFFICHAGE DIRECT DU QR CODE -->
-			<?php if (!empty($_GET['qrcode'])): ?>
-				<div class="qrContainer">
-					<h2><i class="fa-solid fa-qrcode"></i> Votre QR Code</h2>
-				<?php echo $_GET['qrcode']; ?>
-				</div>
+		<?php if (!empty($_GET['qrcode'])): ?>
+    <div class="qrContainer">
+        <h2><i class="fa-solid fa-qrcode"></i> Votre QR Code</h2>
+        <img src="<?php echo htmlspecialchars($_GET['qrcode']); ?>" class="qrImage" alt="QR Code">
+    </div>
+<?php endif; ?>
+
 
 				<!-- BOUTON COPIER LE LIEN -->
 				<button type="button" class="btnPrimary" id="copyLinkBtn">
@@ -70,7 +72,6 @@
 >
     <i class="fa-solid fa-envelope"></i> Envoyer par e-mail
 </a>
-<?php endif; ?>
 
 		</article>
 
