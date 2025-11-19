@@ -65,7 +65,7 @@
 					<i class="fa-solid fa-copy"></i> Copier le lien
 				</button>
 
-				<!-- BOUTON ENVOYER PAR E-MAIL (rempli via JS) -->
+				<!-- BOUTON ENVOYER PAR E-MAIL  -->
 			<a 
     href="mailto:?subject=Votre%20lien%20QR%20Transfert&body=Voici%20le%20lien%20:%0D%0A%0D%0A __URL__ " 
     class="btnPrimary"

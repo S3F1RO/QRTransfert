@@ -171,8 +171,8 @@ article {
 }
 
 .qrImage {
-    width: 220px;
-    height: 220px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
 }
 
