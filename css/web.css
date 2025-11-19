@@ -1,0 +1,77 @@
+/*------------------------------------------------------------------------------
+	WEB : page design
+------------------------------------------------------------------------------*/
+
+
+
+/*==============================
+	Layout
+==============================*/
+
+/* Body & Wrapper */
+.wrapper {
+	min-height: 100vh;
+	max-width: 1200px;
+	margin: 0 auto 0 auto;
+	padding: 1px;
+}
+
+
+
+
+
+/*==============================
+	Style
+==============================*/
+
+/* Set font */
+* {
+	font-family: 'Ubuntu', 'Arial', 'Helvetica', 'Palatino', sans-serif;
+}
+
+/* Body & Wrapper */
+body {
+	background-color: #FBFBFB;
+}
+.wrapper {
+	background-color: #F6F6F6;
+	padding: 0 10px;
+}
+
+
+
+
+
+/*==============================
+	Classes
+==============================*/
+
+
+
+
+
+/*==============================
+	Responsive design
+==============================*/
+
+/* Media query : mobile */
+@media (max-width: 600px) {
+
+
+}
+
+
+
+/* Media query : tablet */
+@media (min-width: 600px) and (max-width: 1200px) {
+
+
+}
+
+
+
+/* Media query : laptop */
+@media (min-width: 1200px) {
+
+
+}
