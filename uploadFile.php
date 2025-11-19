@@ -1,6 +1,9 @@
 <?php
-	//Initialise Database
+	//Includes
+	include_once("./params.php");
 	include_once("./dbConfig.php");
+	
+	//Initialise Database
 	$db = new mysqli(DB_HOST, DB_LOGIN, DB_PWD, DB_NAME);
 	$db->set_charset("utf8");
 
@@ -22,23 +25,24 @@
 					// Generate random filename
 					do {
 						$randomFilename = generateRandomFilename();
-					} while (file_exists("bleutransfert/files/{$randomFilename}.{$extension}"));
+					} while (file_exists("$uploadFile{$randomFilename}.{$extension}"));
 
 					// Save uploaded file to disk and loads the path in the database
-					$query="INSERT INTO tblFiles VALUES (NULL,'bleutransfert/files/{$randomFilename}.{$extension}',NOW());";
+					$query="INSERT INTO tblFiles VALUES (NULL,'$uploadFile{$randomFilename}.{$extension}',NOW());";
 					// echo $query;
 					$success=$db->query($query);
-					
-					if ($success) {
+  					$lastInsertedId = $db->insert_id;
+
+  					if ($success) {
 						session_start();
-						$_SESSION['fileName']=$randomFilename;
+						$_SESSION['id']=$lastInsertedId;
 						header("Location: uploadQR.php");
 						exit();
 					}
 					else header("Location: index.php");
 
-					move_uploaded_file($_FILES["file"]["tmp_name"], "bleutransfert/files/{$randomFilename}.{$extension}");
-					$msg = "File saved in 'bleutransfert/files/{$randomFilename}.{$extension}'.";
+					move_uploaded_file($_FILES["file"]["tmp_name"], "$uploadFile{$randomFilename}.{$extension}");
+					$msg = "File saved in '$uploadFile{$randomFilename}.{$extension}'.";
 				} else {
 					$msg = "Impossible d'envoyer le fichier (" . $_FILES["file"]["error"] . ").";
 				}
