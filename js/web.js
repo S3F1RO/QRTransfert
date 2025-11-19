@@ -50,3 +50,20 @@ jQuery(document).ready(function () {
     });
 
 });
+
+
+// COPIER AUTOMATIQUEMENT LE LIEN DU QR CODE
+jQuery(function () {
+    jQuery("#copyLinkBtn").on("click", function () {
+        
+        // On récupère l'URL actuelle (contient deja ?qrcode=...)
+        const url = window.location.href;
+
+        // Copier dans le clipboard
+        navigator.clipboard.writeText(url).then(function () {
+
+            // Confirmation visuelle
+            alert("Lien copié !");
+        });
+    });
+});

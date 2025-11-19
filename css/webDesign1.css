@@ -100,6 +100,7 @@ article {
     background-color: #d7e4ff;
 }
 
+
 /* Cacher le vrai input file */
 #file {
     display: none;
@@ -122,6 +123,7 @@ article {
     box-shadow: 0 6px 16px rgba(45, 127, 249, 0.35);
     transition: 0.15s ease;
     width: 100%;         /* plein écran sur mobile */
+    text-decoration: none; /* utile aussi pour <a class="btnPrimary"> */
 }
 
 /* Hover / Active bouton */
@@ -132,6 +134,17 @@ article {
 .btnPrimary:active {
     transform: translateY(0);
     box-shadow: 0 4px 12px rgba(45, 127, 249, 0.35);
+}
+
+/* 🔵 NEW : espacement entre les boutons sous le QR */
+.qrContainer + .btnPrimary {
+    margin-top: 0.8rem;
+    width: 100%;
+}
+
+/* si tu ajoutes un second bouton juste après (mail) */
+.qrContainer + .btnPrimary + .btnPrimary {
+    margin-top: 0.5rem;
 }
 
 /*==============================
@@ -163,13 +176,8 @@ article {
     object-fit: contain;
 }
 
-
-
-
-
-
 /*==============================
-    Liens (si tu en ajoutes plus tard)
+    Liens
 ==============================*/
 
 a, a:visited {
@@ -215,6 +223,11 @@ a:active {
     .btnPrimary {
         width: auto;              /* taille auto sur tablette */
     }
+
+    .qrContainer + .btnPrimary,
+    .qrContainer + .btnPrimary + .btnPrimary {
+        width: auto;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -249,5 +262,10 @@ a:active {
     .qrImage {
         width: 260px;
         height: 260px;
+    }
+
+    .qrContainer + .btnPrimary,
+    .qrContainer + .btnPrimary + .btnPrimary {
+        width: auto;
     }
 }
