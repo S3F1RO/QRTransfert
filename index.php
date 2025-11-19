@@ -57,7 +57,7 @@
 					<h2><i class="fa-solid fa-qrcode"></i> Votre QR Code</h2>
 				<?php echo $_GET['qrcode']; ?>
 				</div>
-
+<?php endif; ?>
 				<!-- BOUTON COPIER LE LIEN -->
 				<button type="button" class="btnPrimary" id="copyLinkBtn">
 					<i class="fa-solid fa-copy"></i> Copier le lien
@@ -70,7 +70,7 @@
 >
     <i class="fa-solid fa-envelope"></i> Envoyer par e-mail
 </a>
-<?php endif; ?>
+
 
 		</article>
 
