@@ -31,11 +31,9 @@
 
 	$command = "qrencode -m 3 -s 50 -d 600 -l M -o .$UPLOADFILES/qr/$randomFilename.png '$IPSERVER/QRTransfert$fileName'";
 	exec($command,$output,$returnCode);
-	echo $command, $qrCreated;
-	printf($output);
-
-	if ($returnCode == 0) 
-	header("Location: index.html?qrcode=<img src='.$UPLOADFILES/qr/$randomFilename.png' alt='$randomFilename.png'/>");
+	echo $command;
+	
+	if ($returnCode == 0) header("Location: index.html?qrcode=<img src='.$UPLOADFILES/qr/$randomFilename.png' alt='$randomFilename.png'/>");
 	// else header("Location: logout.php");
 
 	// Function : generate random filename
