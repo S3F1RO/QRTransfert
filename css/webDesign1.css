@@ -163,6 +163,19 @@ article {
     object-fit: contain;
 }
 
+
+
+
+
+/* Effet visuel quand un fichier est au-dessus de la zone */
+.fileLabel.drag-over,
+#dropZone.drag-over {
+    background-color: #cbd9ff;
+    border-color: #1b5fcc;
+    box-shadow: 0 0 0 2px rgba(45, 127, 249, 0.3);
+}
+
+
 /*==============================
     Liens (si tu en ajoutes plus tard)
 ==============================*/
