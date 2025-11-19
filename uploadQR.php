@@ -26,15 +26,17 @@
 	//Check IF the upload time less than 5 minutes & delete in that case
 	$query = "DELETE FROM tblFiles WHERE TIMESTAMPDIFF(MINUTE, uploadDate, NOW()) > 5;";
 	$success = $db->query($query);
+	
 	//Check success
 	if (!$success) header("Location: logout.php");
 
+	//Execute command from qrencode
 	$command = "qrencode -m 3 -s 50 -d 600 -l M -o .$UPLOADFILES/qr/$randomFilename.png '$IPSERVER/QRTransfert$fileName'";
 	exec($command,$output,$returnCode);
 	echo $command;
 	
 	if ($returnCode == 0) header("Location: index.php?qrcode=<img src='.$UPLOADFILES/qr/$randomFilename.png' alt='$randomFilename.png'/>");
-	// else header("Location: logout.php");
+	else header("Location: logout.php");
 
 	// Function : generate random filename
 	function generateRandomFilename($length=20) {

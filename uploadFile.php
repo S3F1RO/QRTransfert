@@ -6,7 +6,6 @@
 	//Initialise Database
 	$db = new mysqli(DB_HOST, DB_LOGIN, DB_PWD, DB_NAME);
 	$db->set_charset("utf8");
-
 	// Data from client (upload)
 	$msg = "";
 	if (isset($_FILES["file"]["name"])) {
@@ -18,7 +17,7 @@
 		if (in_array($extension, $allowedExts)) {
 
 			// Check file size
-			if ($_FILES["file"]["size"] < 20 * 1024 * 1024) {
+			if ($_FILES["file"]["size"] < 100 * 1024 * 1024) {
 
 				// Check errors
 				if ($_FILES["file"]["error"] == 0) {
