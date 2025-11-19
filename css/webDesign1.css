@@ -1,142 +1,248 @@
+/*------------------------------------------------------------------------------
+   QR Transfert : design global
+------------------------------------------------------------------------------*/
+
 /*==============================
-    QR Transfert : mise en forme
+    Base & Layout
 ==============================*/
 
-/* Centrer le contenu principal */
-.wrapper {
-    display: flex;
-    flex-direction:column ;
-    justify-content: flex-start;   /* ✔ tout reste en haut */
-    min-height: 100vh;
-    padding-top: 2rem;             /* optionnel : petite marge en haut */
+/* Reset léger */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", "Arial", "Helvetica", Palatino, sans-serif;
+    color: #555555;
 }
 
+/* Body */
+body {
+    background-color: #f6f6f6;
+}
 
-/* Titre QR Transfert */
+/* Wrapper : mobile-first */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;   /* tout reste en haut */
+    min-height: 100vh;
+    padding: 1.5rem 5vw 2rem;
+}
+
+/* Titres */
+h1, h2, h3 {
+    font-family: "ZCOOL QingKe HuangYou", "Arial", "Helvetica", Palatino, sans-serif;
+    font-weight: bolder;
+}
+
+/* Titre principal */
 h1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.6rem;
-	color: #2d7ff9;           /* bleu principal */
-	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: #2d7ff9;          /* bleu principal */
+    text-align: center;
+    font-size: 1.9rem;       /* mobile-first */
+    margin-bottom: 1.5rem;
 }
 
 /* Icône dans le titre */
 h1 i {
-	font-size: 1.3em;
+    font-size: 1.3em;
 }
-/* Article un peu plus étroit et centré */
+
+/* Conteneur de contenu principal */
 article {
-	max-width: 500px;
-	margin-left: auto;
-	margin-right: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1.2rem 1rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    background-color: #ffffff;
 }
 
 /*==============================
-	Classes
+    Formulaire d’upload
 ==============================*/
 
-/* Formulaire d’upload */
-/* Conteneur du formulaire */
 .uploadForm {
     display: flex;
-    flex-direction: row; /* ✔ alignement horizontal */
-    gap: 1rem;           /* espace entre les boutons */
-    align-items: center; 
-    justify-content: flex-start; /* ✔ aligné à gauche */
-    flex-wrap: wrap;     /* si l’écran est petit, ça passe en ligne suivante */
+    flex-direction: column; /* mobile : en colonne */
+    gap: 0.8rem;
+    align-items: stretch;
+    justify-content: flex-start;
 }
-
 
 /* Label cliquable pour le fichier */
 .fileLabel {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.6rem;
-	padding: 0.7rem 1.2rem;
-	border-radius: 999px;
-	border: 2px dashed #2d7ff9;
-	background-color: #e8f0ff;
-	color: #2d7ff9;
-	cursor: pointer;
-	transition: 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 999px;
+    border: 2px dashed #2d7ff9;
+    background-color: #e8f0ff;
+    color: #2d7ff9;
+    cursor: pointer;
+    transition: 0.15s ease;
+    width: 100%;         /* plein écran sur mobile */
 }
 
 .fileLabel i {
-	font-size: 1.1em;
+    font-size: 1.1em;
 }
 
 /* Effet hover */
 .fileLabel:hover {
-	background-color: #d7e4ff;
+    background-color: #d7e4ff;
 }
 
-/* Cacher le vrai input file (on clique sur le label) */
+/* Cacher le vrai input file */
 #file {
-	display: none;
+    display: none;
 }
 
 /* Bouton principal */
 .btnPrimary {
-	border: none;
-	outline: none;
-	padding: 0.7rem 1.6rem;
-	border-radius: 999px;
-	background: linear-gradient(135deg, #2d7ff9, #1b5fcc);
-	color: #ffffff;
-	font-weight: 600;
-	cursor: pointer;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	box-shadow: 0 6px 16px rgba(45, 127, 249, 0.35);
-	transition: 0.15s ease;
+    border: none;
+    outline: none;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2d7ff9, #1b5fcc);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 16px rgba(45, 127, 249, 0.35);
+    transition: 0.15s ease;
+    width: 100%;         /* plein écran sur mobile */
 }
 
 /* Hover / Active bouton */
 .btnPrimary:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 9px 22px rgba(45, 127, 249, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 9px 22px rgba(45, 127, 249, 0.5);
 }
 .btnPrimary:active {
-	transform: translateY(0);
-	box-shadow: 0 4px 12px rgba(45, 127, 249, 0.35);
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(45, 127, 249, 0.35);
 }
-
-
-
-
-
 
 /*==============================
-	Responsive design
+    QR code affiché dans la page
 ==============================*/
 
-/* Media query : mobile */
-@media (max-width: 600px) {
-
-
-
-
-
-
-
- 
+.qrContainer {
+    text-align: center;
+    margin-top: 1.8rem;
+    padding: 1.3rem 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+.qrContainer h2 {
+    color: #2d7ff9;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
 
+.qrImage {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+}
 
-/* Media query : tablet */
+/*==============================
+    Liens (si tu en ajoutes plus tard)
+==============================*/
+
+a, a:visited {
+    color: #2d7ff9;
+    text-decoration: none;
+}
+a:hover {
+    color: #80b3ff;
+}
+a:active {
+    color: #aaccff;
+}
+
+/*==============================
+    Responsive design
+==============================*/
+
+/* Mobile déjà géré par défaut (max 600px) */
+
 @media (min-width: 600px) and (max-width: 1200px) {
+    /* Tablette */
 
+    .wrapper {
+        padding: 2rem 10vw;
+    }
 
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    article {
+        padding: 1.5rem 1.5rem;
+    }
+
+    .uploadForm {
+        flex-direction: row;       /* boutons côte à côte */
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .fileLabel,
+    .btnPrimary {
+        width: auto;              /* taille auto sur tablette */
+    }
 }
 
-
-
-/* Media query : laptop */
 @media (min-width: 1200px) {
+    /* Laptop / PC */
 
+    .wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 3rem 0 2.5rem;
+    }
 
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    article {
+        padding: 1.8rem 2.2rem;
+    }
+
+    .uploadForm {
+        flex-direction: row;      /* côte à côte */
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .fileLabel,
+    .btnPrimary {
+        width: auto;
+    }
+
+    .qrImage {
+        width: 260px;
+        height: 260px;
+    }
 }
